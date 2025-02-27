@@ -16,6 +16,6 @@ let rec t sum i =
                 t sum (i + 1)
         else
             printf "Ошибка ввода"
-            sum  // Return current sum in case of input error
+            sum 
 
 t 0 0
