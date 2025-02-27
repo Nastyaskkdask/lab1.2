@@ -1,16 +1,21 @@
 open System
 
-printf "Введите натуральное число:  "
-
+printf "Введите натуральное число: "
 let S = Console.ReadLine()
 
 let rec t sum i =
     if i = S.Length then
-        printfn "Кол-во чётных элементов в числе = %i" sum
+        printf "Кол-во чётных элементов в числе = %i" sum
         sum
-    elif int(S.Chars(i)) % 2 = 0 then
-        t (sum + 1) (i + 1)
     else
-        t sum (i + 1)
+        let currentChar = S.[i]
+        if Char.IsDigit(currentChar) then
+            if (int currentChar - int '0') % 2 = 0 then
+                t (sum + 1) (i + 1)
+            else
+                t sum (i + 1)
+        else
+            printf "Ошибка ввода"
+            sum  // Return current sum in case of input error
 
 t 0 0
